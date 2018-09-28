@@ -1,0 +1,501 @@
+
+/*--------------------------------------------------------------
+1 - Global
+--------------------------------------------------------------*/
+
+html{
+  @include font(18px, 600, 1.2);
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 0.5px;
+  color: $black;
+  height: 100vh;
+}
+main{
+  height: 100%;
+  width: 100%;
+}
+// Grid
+
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+.column{
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 1px;
+}
+.column-left{
+  flex: 0 0 56.25%;
+  max-width: 56.25%;
+}
+.column-right{
+  flex: 0 0 43.75%;
+  max-width: 43.75%;
+}
+.d-none{
+  display: none;
+}
+a {
+  color: $black;
+  cursor: pointer;
+}
+a:hover{
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+}
+p{
+  margin-bottom: 10px;
+}
+button, input{
+  &:focus, &:active  {
+    outline: 0;
+  }
+}
+
+/*------------text styles------------*/
+
+.title-size-biggest{
+  @include font(247.5px, 800, 1);
+  letter-spacing: 1.2px;
+}
+h1, .title-size-big{
+  @include font(40px, 800, 1.2);
+  letter-spacing: 2.1px;
+}
+h2, .title-size-medium{
+  @include font(31.5px, 700, 1.2);
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+}
+
+h3 {
+  @include font(24px, 600, 1.2);
+  letter-spacing: 1.2px;
+}
+
+h4, .title-size-small{
+  @include font(18px, 600, 1.2);
+  letter-spacing: 0.5px;
+}
+
+.text-smallest  {
+  @include font(13.5px, 300, 1);
+}
+
+.fw300{
+  font-weight: 300;
+}
+.fw600{
+  font-weight: 600;
+}
+.fw700{
+  font-weight: 700;
+}
+.fw800{
+  font-weight: 800;
+}
+.text-white{
+  color: $white;
+}
+.text-black{
+  color: $black;
+}
+.bg-gray{
+  background-color: $gray-light;
+}
+.text-center{
+  text-align: center;
+}
+.uppercase{
+  text-transform: uppercase;
+}
+//.height100vh{
+//  height: 100vh;
+//}
+.v-center{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/*------------end with text styles------------*/
+
+/*------------button style------------*/
+
+.button{
+  display: inline-block;
+  text-align: center;
+  box-sizing: border-box;
+
+  min-height: 80px;
+
+  color: $black;
+
+  background-color: $white;
+  border: solid 1px $gray;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition: all .3s;
+  cursor: pointer;
+
+  &:hover, &:active, &:focus, &.active{
+    color: $white;
+  }
+  &.variant{
+    padding: 20px 28px;
+    border-radius: 10px;
+    @include font(26px, 600, 1);
+    min-width: 220px;
+  }
+  &.continue, &.form-button{
+    padding: 25px 32px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    @include font(26px, 700, 1);
+  }
+  &[disabled]{
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+// Navigation
+
+.sidebar{
+  padding: 10px;
+  background-color: $white-transparent;
+  ul{
+    width: 100%;
+    max-width: 730px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  a{
+    @include font(12px, 700, 1.2);
+    display: inline-block;
+    padding: 5px 0;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    transition: all .1s ;
+    &:hover{
+      text-shadow: -1px 0 4px $white-transparent,
+      0 -1px 4px $white-transparent,
+      0 1px 4px $white-transparent,
+      1px 0 4px $white-transparent;
+    }
+
+  }
+}
+
+// Forms & Inputs
+
+.form-check-input{
+  display: none;
+}
+.form-flex{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+input{
+  &[type="text"], &[type="email"], &[type="password"]{
+    box-sizing: border-box;
+    padding: 28px 20px;
+    border-radius: 10px;
+    border: 1px solid $gray;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+    @include font(18px, 300, 1);
+    color: $black;
+  }
+  &::placeholder{
+    color: transparent;
+  }
+}
+
+.error{
+  &[type="text"], &[type="email"], &[type="password"] {
+    border-color: $red;
+
+    &, &::placeholder {
+      color: $red-deep;
+    }
+  }
+}
+input[type=checkbox]{
+  &:checked{
+    &+label{
+      .icon-check{
+        background-image: url("../images/icons/form-check-in.png");
+      }
+    }
+  }
+}
+label{
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.form-block{
+  .title-size-small{
+    margin-bottom: 5px;
+  }
+}
+.check-agree{
+  display: flex;
+  flex-direction: row;
+}
+
+//Icons
+
+i[class^=icon-], .icon{
+  display: inline-block;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 10px;
+  font-style: normal;
+}
+.icon-man, .icon-woman{
+  position: relative;
+  &, &::after, &::before{
+    width: 32px;
+    height: 38px;
+  }
+  &::after, &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    @extend .icon;
+    transition: all .3s;
+  }
+  &::before{
+    z-index: 4;
+  }
+  &::after{
+    z-index: 3;
+    opacity: 0;
+  }
+}
+.icon-man{
+  &::before{
+    background-image: url("../images/icons/man-gray.png") ;
+  }
+  &::after{
+    background-image: url("../images/icons/man-white.png") ;
+  }
+}
+.icon-woman{
+  &::before{
+    background-image: url("../images/icons/woman-gray.png") ;
+  }
+  &::after{
+    background-image: url("../images/icons/woman-white.png") ;
+  }
+}
+.button{
+  &:hover, &:active, &:focus, &.active{
+    .icon-man, .icon-woman{
+      &::after{
+        opacity: 1;
+        z-index: 5;
+      }
+      &::before{
+        opacity: 0;
+      }
+    }
+  }
+}
+.icon-check{
+  background-image: url("../images/icons/form-check.png");
+  width: 13px;
+  min-width: 13px;
+  height: 13px;
+}
+//.icon-main-beaker{
+//  background-image: url("../images/icons/beaker.png");
+//  width: 42px;
+//}
+
+.question-marker{
+  position: relative;
+
+  &::before, &::after{
+    content: "";
+    position: absolute;
+  }
+
+  &::before{
+    box-sizing: border-box;
+    top: 0;
+    //transform: translate(-50%, -50%);
+    left: -110px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: $white;
+    border-width: 10px;
+    border-style: solid;
+  }
+
+  &::after{
+    @extend .icon;
+    top: 25px;
+    left: -90px;
+    width: 38px;
+    height: 32px;
+    z-index: 5;
+  }
+}
+
+// Themes
+
+.theme {
+  &.answer--false .test-result{
+    background-color: transparent;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  &.answer--true .test-result{
+    opacity: 1;
+  }
+}
+
+// Orange Theme
+
+.theme--orange{
+  h2{
+    color: $orange;
+  }
+  .button{
+    &:hover, &:active, &:focus, &.active{
+      background-color: $orange;
+    }
+  }
+  &.answer--true .test-result{
+    background-color: $orange-transparent;
+  }
+  .column{
+    background-color: $orange;
+  }
+  .sidebar{
+    a{
+      &:hover, &:active, &:focus, &.active{
+        color: $orange;
+      }
+    }
+  }
+  .question-marker{
+    &::before{
+      border-color: $orange;
+    }
+    &::after{
+      background-image: url("../images/icons/heart-orange.png") ;
+    }
+  }
+}
+
+// Yellow Theme
+
+.theme--yellow{
+  h2{
+    color: $yellow;
+  }
+  .button{
+    &:hover, &:active, &:focus, &.active{
+      background-color: $yellow;
+    }
+  }
+  &.answer--true .test-result{
+    background-color: $yellow-transparent;
+  }
+  .column{
+    background-color: $yellow;
+  }
+  .sidebar{
+    a{
+      &:hover, &:active, &:focus, &.active{
+        color: $yellow;
+      }
+    }
+  }
+  .question-marker{
+    &::before{
+      border-color: $yellow;
+    }
+    &::after{
+      background-image: url("../images/icons/heart-yellow.png") ;
+    }
+  }
+}
+
+// Blue Theme
+
+.theme--blue{
+  h2{
+    color: $blue;
+  }
+  .button{
+    &:hover, &:active, &:focus, &.active{
+      background-color: $blue;
+    }
+    &.variant{
+      font-size: 24px;
+    }
+  }
+  .form-button{
+    &[disabled]{
+      cursor: default;
+      visibility: visible;
+      opacity: 1;
+      border-color: $blue;
+      color: $gray-medium;
+      &:hover, &:active, &:focus{
+        color: $gray-medium;
+        background-color: inherit;
+      }
+    }
+    &:hover, &:active, &:focus{
+      color: $white;
+    }
+  }
+  .column{
+    background-color: $blue;
+  }
+  .sidebar{
+    a{
+      &:hover, &:active, &:focus, &.active{
+        color: $blue;
+      }
+    }
+  }
+  .question-marker{
+    &::before{
+      border-color: $blue;
+    }
+    &::after{
+      background-image: url("../images/icons/heart-blue.png") ;
+    }
+  }
+}
+
+
+
+

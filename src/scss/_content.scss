@@ -1,0 +1,63 @@
+// Left Screen
+
+.wr-overlay{
+  height: 100%;
+  background: url("../images/pretty-girl-min.png") no-repeat top center;
+  background-size: cover;
+}
+
+.column-left{
+  padding-right: 6px;
+
+  &>div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .test-result{
+    flex: auto;
+
+    &>*{
+      padding: 0 20px;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+  }
+}
+
+// Right Screen
+
+.column-right{
+  padding-top: 11.6%;
+  padding-left: 6px;
+  background-color: transparent;
+  transition: all .3s;
+
+  article{
+    height: 100%;
+    padding: 90px 65px 30px;
+    box-sizing: border-box;
+  }
+  h2{
+    max-width: 550px;
+    min-height: 100px;
+    margin-bottom: 30px;
+  }
+}
+.block-variants{
+  min-height: 285px;
+  margin-bottom: 90px;
+
+  .button{
+    min-width: 385px;
+    margin-bottom: 17px;
+  }
+}
+.block-continue{
+  .button{
+    margin-left: 40px;
+  }
+}
+.form-block{
+  max-width: 470px;
+}

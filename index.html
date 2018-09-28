@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="images/icons/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600,700,800&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.min.css">
+    <title>Lorem ipsum</title>
+</head>
+<body>
+
+<!-- selected theme: theme--orange || theme--yellow || theme--blue -->
+<!-- selected answer: answer--true || answer--false -->
+
+<main class="wrapper theme theme--orange answer--false">
+
+    <!-- Left Screen -->
+    <section class="column column-left">
+    
+        <div class="wr-overlay">
+            <figure class="test-result v-center text-white">
+                <div class="title-size-biggest" id="resultPercents"></div>
+                <figcaption class="title-size-big  uppercase" id="resultCaption"></figcaption>
+            </figure>
+    
+            <!-- Sidebar -->
+            <nav class="sidebar">
+                <ul>
+                    <li><a>название1</a></li>
+                    <li><a>название2</a></li>
+                    <li><a>название3</a></li>
+                    <li><a>название4</a></li>
+                    <li><a>очень длинное название5</a></li>
+                    <li><a>очень очень длинное название6</a></li>
+                    <li><a>длинное название7</a></li>
+                    <li><a>длинное название8</a></li>
+                </ul>
+            </nav>
+        </div>
+    
+    </section>
+
+    <!-- Right Screen -->
+    <section class="column column-right" >
+
+        <!-- Screen - 1 -->
+        <article id="screen-1" class="bg-gray active">
+            <h2 class="question-marker">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+                Integer a urna sit amet
+            </h2>
+            <div class="button-block block-variants">
+                <button class="button variant" data-id="0">Вариант А</button>
+                <button class="button variant" data-id="1">Вариант Б</button>
+                <button class="button variant" data-id="2">Вариант В</button>
+            </div>
+            <div class="button-block block-continue">
+                <button type="submit" class="button continue button--white" data-href="screen-2" id="next-screen-2" disabled>
+                    продолжить
+                </button>
+            </div>
+        </article>
+
+        <!-- Screen - 2 -->
+        <article id="screen-2" class="bg-gray d-none">
+            <h2 class="question-marker">Lorem ipsum</h2>
+        
+                <div class="button-block block-variants">
+                    <button class="button variant" data-id="0"><i class="icon-man"></i>Вариант А</button>
+                    <button class="button variant" data-id="1"><i class="icon-woman"></i>Вариант Б</button>
+                </div>
+                <div class="button-block block-continue">
+                    <button type="submit" class="button continue" data-href="screen-3" id="next-screen-3" disabled>продолжить</button>
+                </div>
+        
+        </article>
+
+        <!-- Screen - 3 -->
+        <article id="screen-3" class="bg-gray d-none">
+            <h2 class="question-marker">Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit,
+                sed do eiusmod </h2>
+        
+            <div class="form-block">
+        
+                <form>
+                    <div class="title-size-small">Я ищу:</div>
+                    <div class="form-flex">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="formRadioOptions" id="formRadioMan" value="man">
+                            <label class="form-check-label button variant" for="formRadioMan"><i class="icon-man"></i>Вариант 1</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="formRadioOptions" id="formRadioWoman" value="woman">
+                            <label class="form-check-label button variant" for="formRadioWoman"><i class="icon-woman"></i>Вариант 2</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="title-size-small" for="formInputName">Ваше имя:</label>
+                        <input type="text" class="form-control" id="formInputName" placeholder="Введите свое имя">
+                    </div>
+                    <div class="form-group">
+                        <label class="title-size-small" for="formInputEmail">Email:</label>
+                        <input type="email" class="form-control" id="formInputEmail" placeholder="Неверный формат email">
+                    </div>
+                    <div class="form-group">
+                        <label class="title-size-small" for="formInputPassword">Придумайте пароль:</label>
+                        <input type="password" class="form-control" id="formInputPassword" placeholder="Придумайте новый пароль">
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="formCheck" checked >
+                        <label class="text-smallest form-check-label check-agree" for="formCheck"><i class="icon-check"></i>Регистрируясь, вы
+                            подтверждаете, что вам уже исполнилось
+                            18 лет и вы ознакомились с условиями пользования сайтом.
+                        </label>
+                    </div>
+                    <button type="submit" class="button form-button" disabled>продолжить</button>
+                </form>
+            </div>
+        </article>
+
+    </section>
+
+</main>
+
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/main.min.js"></script>
+</body>
+</html>

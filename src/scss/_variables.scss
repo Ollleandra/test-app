@@ -1,0 +1,39 @@
+/* Color palette */
+
+$white: #ffffff;
+$white-transparent: rgba(255,255,255,.74);
+
+$black: #3b3b3b;
+
+$orange: #fc8950;
+$orange-transparent: rgba(252,137,80,.7);
+
+$yellow: #fcc150;
+$yellow-transparent: rgba(252,193,80,.7);
+
+$blue: #1da7c0;
+
+$gray: #d3d3d3;
+$gray-medium: #aaa9a9;
+$gray-light: #f6f5f5;
+
+$red: #ff0000;
+$red-deep: #b72020;
+
+@function remy($pxsize) {
+  @return ($pxsize/16)+rem;
+}
+
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px
+) !default;
+
+@mixin font($fs, $fw, $lh) {
+  font-size: $fs;
+  font-weight: $fw;
+  line-height: $lh;
+}
