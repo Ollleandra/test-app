@@ -74,9 +74,9 @@ $(document).ready(function() {
         }
     });
 
-    $(".form-block").on("click", ".form-check-input", function () {
+    $(".form-block").on("click", ".check-button", function () {
 
-        $(this).parents(".form-block").find(".form-check-input+label").removeClass("active");
+        $(this).parents(".form-block").find(".check-button+label").removeClass("active");
         $(this).next("label").addClass("active");
 
     });
@@ -106,9 +106,9 @@ $(document).ready(function() {
 
         // Function of illumination of empty fields
         function lightEmpty(){
-            form.find('.error+label, .empty_field, .not-valid').css({'border-color':'#ff0000'});
+            form.find('.empty_field, .not-valid').css({'border-color':'#ff0000'});
             setTimeout(function(){
-                form.find('.error+label, .empty_field, .not-valid').removeAttr('style');
+                form.find('.empty_field, .not-valid').removeAttr('style');
             },1000);
         }
 
