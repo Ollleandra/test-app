@@ -20,8 +20,16 @@ $gray-light: #f6f5f5;
 $red: #ff0000;
 $red-deep: #b72020;
 
+/* Font Sizes */
+
+$html-font-size-xl: 18px;
+$html-font-size-lg: 16px;
+$html-font-size-md: 15px;
+$html-font-size-sm: 14px;
+$html-font-size-xs: 13px;
+
 @function remy($pxsize) {
-  @return ($pxsize/16)+rem;
+  @return ($pxsize/18)+rem;
 }
 
 $grid-breakpoints: (

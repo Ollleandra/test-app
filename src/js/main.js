@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    // Test Answers
+
     var testAnswers = {
         "screen-1": {
             0: ["20% ", "людей обращают внимание на А."],
@@ -11,7 +13,7 @@ $(document).ready(function() {
             1: ["47,6%", "пользователей — вариант Б"],
         }
     };
-
+    // Themes
     var
         theme = {
         "screen-1": "theme--orange",
@@ -75,125 +77,115 @@ $(document).ready(function() {
     $(".form-block").on("click", ".form-check-input", function () {
 
         $(this).parents(".form-block").find(".form-check-input+label").removeClass("active");
-
         $(this).next("label").addClass("active");
 
     });
 
+    // Form Validation
 
-    // //regex to validate email
-    // function validateEmail(email) {
-    //     var regEx = /.+?\@.+/g;
-    //     return regEx.test(email);
-    // }
+    $('.sendForm').each(function(){
+        // Declare variables (form and button)
+        let form = $(this),
+            btn = form.find('.form-button');
 
-    function addError(inputEl){
-        if (!inputEl.val()) {
-            !inputEl.hasClass('error') ? inputEl.addClass('error') : '';
+        // Add each checked field, an indication that the field is empty
+        form.find('.form-control').addClass('empty_field');
+        form.find('input[type=\'radio\']').addClass('error');
+        form.find('input[type=\'email\']').addClass('not-valid');
+
+        // Form text Field Validation Function
+        function checkInput(){
+            form.find('.form-control').each(function(){
+                if($(this).val()){
+                    $(this).removeClass('empty_field');
+                } else {
+                    $(this).addClass('empty_field');
+                }
+            });
         }
-        else {
-            inputEl.hasClass('error') ? inputEl.removeClass('error') : '';
+
+        // Function of illumination of empty fields
+        function lightEmpty(){
+            form.find('.error+label, .empty_field, .not-valid').css({'border-color':'#ff0000'});
+            setTimeout(function(){
+                form.find('.error+label, .empty_field, .not-valid').removeAttr('style');
+            },1000);
         }
-    }
 
-    // validation for email input using validateEmail Function
-    function checkValidEmail(emailInput) {
-        $(emailInput).blur(function () {
-            let email = $(emailInput).val();
-
-            if (!email
-                && (email.match(/.+?\@.+/g) || []).length !== 1) {
-                console.log('invalid');
+        // Real-Time Scan
+        setInterval(function(){
+            checkInput();
+            checkInputRadio();
+            isEmail($("#formInputEmail"));
+            checkInputCheckbox();
+            // Count the number of empty fields
+            let sizeEmpty = form.find('.empty_field').size();
+            let sizeError = form.find('.error').size();
+            let sizeEmail = form.find('.not-valid').size();
+            let sizeCheckbox = form.find('.not-checked').size();
+            // set the trigger condition on the submit form button
+            if ((sizeEmpty > 0) || (sizeError>0) || (sizeEmail>0) || (sizeCheckbox>0)){
+                if(btn.hasClass('disabled')){
+                    return false
+                } else {
+                    btn.addClass('disabled')
+                }
             } else {
-                console.log('valid');
+                btn.removeClass('disabled')
             }
+        },3000);
 
-            // if (validateEmail(email)) {
-            //     $(this).hasClass('error') ? $(this).removeClass('error') : '';
-            // }
-            // else {
-            //     !$(this).hasClass('error') ? $(this).addClass('error') : '';
-            // }
+        function checkInputRadio(){
+
+            form.find('input[type=\'radio\']').each(function() {
+                let radioName= $(this).attr('name');
+                let isChecked =$("input[name='"+radioName+"']:checked").val();
+
+                if( $(this).val() && isChecked){
+                    $(this).removeClass('error');
+                }
+                else {
+                    $(this).addClass('error');
+                }
+            });
+        }
+
+        function checkInputCheckbox(){
+
+            form.find('input[type=\'checkbox\']').each(function() {
+                let checkboxName= $(this);
+                let isChecked = checkboxName.prop("checked");
+
+                if (isChecked){
+                    $(this).removeClass('not-checked');
+                }
+                else {
+                    $(this).addClass('not-checked');
+                }
+            });
+        }
+
+        function isEmail(email) {
+            let filter =  /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+            if (filter.test(email.val())) {
+                email.removeClass('not-valid');
+            }
+            else {
+                email.addClass('not-valid');
+            }
+        }
+        // Click event submit button
+        btn.click(function(){
+            if($(this).hasClass('disabled')){
+                // highlight the Empty or error fields and the form does not send, if there are error fields
+                lightEmpty();
+                $(this).parents(".sendForm").addClass("error-form");
+                return false
+            } else {
+                // if is well, everything is filled, we send the form
+                form.submit();
+            }
         });
-    }
-
-    function checkNameEmpty(inputID) {
-        $(inputID).blur(function(){
-            addError($(this));
-        });
-    }
-
-    function checkPassword(inputID) {
-        $(inputID).blur(function(){
-            addError($(this));
-        });
-    }
-
-
-    checkNameEmpty("#formInputName");
-    checkValidEmail("#formInputEmail");
-    checkPassword("#formInputPassword");
-
-    // https://habr.com/post/175375/
-    // https://www.quora.com/What-is-the-proper-email-validation-in-jQuery-or-JavaScript
-
-    columnRight.on( "click", ".form-button", function() {
-
-        //when click on submit
-        // $("#submitForm").click(function(){
-        //
-        //
-        //     if($("#name").val() == '')
-        //     {
-        //         $("#name").css('border','1px solid red');
-        //         return false;
-        //     }
-        //
-        //
-        //     if($("#email").val() == '')
-        //     {
-        //         $("#email").css('border','1px solid red');
-        //         return false;
-        //     }
-        //
-        //     if($("#email").val() != '')
-        //     {
-        //         var email = $("#email").val();
-        //         if (!validateEmail(email))
-        //         {
-        //             return false;
-        //         }
-        //     }
-        //
-        //
-        //     if($("#phone").val() == '')
-        //     {
-        //         $("#phone").css('border','1px solid red');
-        //         return false;
-        //     }
-        //
-        //
-        //     if($("#phone").val() != '')
-        //     {
-        //         var getPhone = validatePhone($("#phone").val());
-        //         if(!getPhone)
-        //         {
-        //             return false;
-        //         }
-        //     }
-        //
-        //
-        //     if($("#comment").val() == '')
-        //     {
-        //         $("#comment").css('border','1px solid red');
-        //         return false;
-        //     }
-        //
-        //
-        // });
-
     });
-
-
 
 });

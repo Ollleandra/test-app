@@ -1,15 +1,3 @@
-/*
-* путь к картинкам если вставлять в php файл ../../wp-content/themes/ipromo/images/.....
-* картинки заружать в wp-content/themes/ipromo/src/images/....
-* js файлы в wp-content/themes/ipromo/src/js/.....
-*
-* время от времени подчищать папку src/images командой gulp cleanImg
-*
-* на сервер загружать только картинки с папки wp-content/themes/ipromo/images  !!!!
-* из папки src/images загружать не нужно
-* */
-
-
 "use strict";
 const   gulp            =       require("gulp"),
         autoprefixer    =       require("autoprefixer"),
@@ -82,9 +70,9 @@ gulp.task('cleanImg', function () {
 });
 
 gulp.task('html:build', function () {
-    gulp.src(path.srcHtml) //Выберем файлы по нужному пути
-        .pipe(rigger()) //Прогоним через rigger
-        .pipe(gulp.dest(path.buildHtml)) //выгрузим их в папку build
+    gulp.src(path.srcHtml)
+        .pipe(rigger())
+        .pipe(gulp.dest(path.buildHtml))
 });
 
 gulp.task('watch', function () {
@@ -101,7 +89,6 @@ gulp.task('watch', function () {
         gulp.start('html:build');
     })
 });
-
 
 gulp.task('default', function (cb) {
    run(
